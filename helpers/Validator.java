@@ -6,4 +6,8 @@ public class Validator {
 		return c == c1;
 	}
 
+	public static boolean isHigherThan10(int number){
+		return number > 10;
+	}
+
 }

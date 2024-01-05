@@ -18,8 +18,10 @@ public class Main {
 	 * @param args Command-line arguments (not used in this application).
 	 */
 	public static void main(String[] args) {
-		GameController gameController = new GameController(new View(),
-				new User(), new CodeGenerator(), new ScoreKeeper());
-		gameController.runGame();
+//		GameController gameController = new GameController(new View(),
+//				new User(), new CodeGenerator(), new ScoreKeeper());
+//		gameController.runGame();
+		CodeGenerator codeGenerator = new CodeGenerator();
+
 	}
 }

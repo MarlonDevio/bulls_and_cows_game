@@ -18,12 +18,16 @@ public class View {
 	 */
 	public int getLengthOfCode(String question) {
 		int length = CollectInput.getIntInput(question);
-		if (length > 10) {
+		if (length > 36) {
 			CollectInput.printMessage("Error: Can't generate a secret number with a length of 11 because there " +
 					"aren't enough unique digits.");
 			return getLengthOfCode(question);
 		}
 		return length;
+	}
+
+	public int getNumberOfPossibleSymbols(String question){
+	 return CollectInput.getIntInput(question);
 	}
 
 	/**

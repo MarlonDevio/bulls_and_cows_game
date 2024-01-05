@@ -1,5 +1,7 @@
 package bullscows.model;
 
+import bullscows.helpers.Validator;
+
 import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.Set;
@@ -25,6 +27,11 @@ public class CodeGenerator {
 		return uniqueCode.toString();
 	}
 
+	private int determineMaxRangeOfLetters(int uniqueSymbols){
+		int randomSymbolsStart = 96;
+		return randomSymbolsStart + (uniqueSymbols-10);
+	}
+
 	/**
 	 * Generates a unique code of a specified length. The code is composed of pseudo-random unique digits.
 	 * If the first digit is '0', it is removed and replaced to ensure the code does not start with a zero.
@@ -39,10 +46,6 @@ public class CodeGenerator {
 			char character = (char) ('0' + digit);
 			uniqueDigits.add(character);
 
-			// Remove '0' if it is the first character
-			if (uniqueDigits.size() == 1 && character == '0') {
-				uniqueDigits.remove(character);
-			}
 		}
 		return convertUniqueSetToString(uniqueDigits);
 	}
