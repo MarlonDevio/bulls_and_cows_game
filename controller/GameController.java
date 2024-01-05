@@ -45,6 +45,7 @@ public class GameController {
 	private void initializeGame() {
 		int codeLength = view.getLengthOfCode("Please, enter the secret code's length");
 		int possibleSymbols = view.getNumberOfPossibleSymbols("Input the number of possible symbols in the code");
+		view.displayAsterisks(codeLength);
 		codeGenerator.setCode(codeLength);
 		System.out.println(codeGenerator.getCode());
 		view.displayStartOfGameMessage();

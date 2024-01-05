@@ -1,10 +1,16 @@
 package bullscows;
 
+//import bullscows.controller.CodeController;
+import bullscows.controller.CodeValidationController;
 import bullscows.controller.GameController;
+import bullscows.model.Code;
 import bullscows.model.CodeGenerator;
 import bullscows.model.ScoreKeeper;
 import bullscows.model.User;
+import bullscows.view.CodeView;
+import bullscows.view.MainView;
 import bullscows.view.View;
+import bullscows.view.WelcomeView;
 
 /**
  * The Main class is the entry point for the Bulls and Cows game.
@@ -21,7 +27,15 @@ public class Main {
 //		GameController gameController = new GameController(new View(),
 //				new User(), new CodeGenerator(), new ScoreKeeper());
 //		gameController.runGame();
-		CodeGenerator codeGenerator = new CodeGenerator();
-
+//		CodeController controller = new CodeController()
+//		MainView view = new WelcomeView();
+//
+//			}
+		CodeView codeView = new CodeView();
+		Code code = new Code();
+		CodeValidationController val = new CodeValidationController(codeView, code);
+		val.handleUserCodeValidation();
+		int l = code.getCodeLength();
+		System.out.println(l);
 	}
 }

@@ -1,6 +1,7 @@
 package bullscows.view;
 
 import bullscows.helpers.CollectInput;
+import bullscows.helpers.Validator;
 
 /**
  * The View class manages the user interface for the Bulls and Cows game.
@@ -9,6 +10,15 @@ import bullscows.helpers.CollectInput;
 public class View {
 	private int turns;
 
+	public void displayAsterisks(int codeLength){
+		for(int i = 0; i<codeLength;i++){
+			System.out.print("*");
+		}
+	}
+	public static void displayNumbers(int maxRangeOfLetters){
+		String chars = Validator.isHigherThan10(11) ? "a-" : "";
+		System.out.print("(0-9, "+chars+"-"+maxRangeOfLetters);
+	}
 	/**
 	 * Prompts the user for the length of the secret code and validates the input.
 	 * The length cannot exceed 10 due to the limitation of unique digits (0-9).
@@ -27,7 +37,12 @@ public class View {
 	}
 
 	public int getNumberOfPossibleSymbols(String question){
-	 return CollectInput.getIntInput(question);
+		int symbolNumbers =  CollectInput.getIntInput(question);
+		if(symbolNumbers > 36) {
+			CollectInput.printMessage("Error: can't generate a secret number with more than 26 symbols");
+			return getNumberOfPossibleSymbols(question);
+		}
+		return symbolNumbers;
 	}
 
 	/**
