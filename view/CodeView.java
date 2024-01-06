@@ -5,17 +5,22 @@ import bullscows.interfaces.ICodeView;
 public class CodeView extends MainView implements ICodeView {
 
 	public int askCodeLength(){
-		return getIntegerInput("What is the code length?");
+		return askCodeLength("What is the code length?");
 	}
 
 	@Override
 	public int askSymbolLength() {
-		return 0;
+		 return askSymbolLength("What's the length of the symbols");
 	}
 
 	@Override
 	public void displayMessage() {
-		System.ou;
+		displayMessage("");
+	}
+
+	@Override
+	public void displayMessage(String message) {
+		System.out.println(message);
 	}
 
 	public int askCodeLength(String question) {
@@ -26,6 +31,8 @@ public class CodeView extends MainView implements ICodeView {
 		return getIntegerInput(question);
 	}
 
-
+public void he(){
+	System.out.println("he");
+}
 
 	}

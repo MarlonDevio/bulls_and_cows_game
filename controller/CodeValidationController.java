@@ -8,7 +8,7 @@ public class CodeValidationController {
 	private ICodeView codeView;
 	private Code code;
 
-	public CodeValidationController(){
+	public CodeValidationController() {
 		this(new CodeView(), new Code());
 	}
 
@@ -18,13 +18,29 @@ public class CodeValidationController {
 	}
 
 	public void handleUserCodeValidation() {
-		int codeLength = codeView.askCodeLength();
-		if(!(code.isValidMaxLength(codeLength))) {
-			handleUserCodeValidation();
+		int codeLength;
+		while (true) {
+			codeLength = codeView.askCodeLength();
+			if (!(code.isValidMaxLength(codeLength))) {
+				codeView.displayMessage("Too long!");
+				continue;
+			}
+			code.setCodeLength(codeLength);
+			break;
 		}
-
-		code.setCodeLength(codeLength);
 	}
 
+	public void handleUserSymbolValidation() {
+		int symbolLength;
+		while (true) {
+			symbolLength = codeView.askSymbolLength();
+			if (!(code.isValidMaxSymbols(symbolLength))) {
+				codeView.displayMessage("Too many symbols!");
+				continue;
+			}
+			code.setPossibleSymbols(symbolLength);
+			break;
+		}
+	}
 
 }

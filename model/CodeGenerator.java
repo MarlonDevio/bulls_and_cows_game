@@ -13,6 +13,7 @@ import java.util.Set;
 public class CodeGenerator {
 	private String code;
 	private static final Random random = new Random();
+	private static final int RANDOM_SYMBOL_START_ASCII = 96;
 
 	/**
 	 * Converts a set of unique characters into a string.
@@ -27,10 +28,12 @@ public class CodeGenerator {
 		return uniqueCode.toString();
 	}
 
-	private int determineMaxRangeOfLetters(int uniqueSymbols){
-		int randomSymbolsStart = 96;
-		return randomSymbolsStart + (uniqueSymbols-10);
+	private int getRangeOfASCIISymbols(int uniqueSymbols){
+		return RANDOM_SYMBOL_START_ASCII + (uniqueSymbols-10);
 	}
+
+
+
 
 	/**
 	 * Generates a unique code of a specified length. The code is composed of pseudo-random unique digits.

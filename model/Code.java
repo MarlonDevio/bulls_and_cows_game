@@ -34,4 +34,9 @@ public class Code {
 	public int getPossibleSymbols(){
 		return this.possibleSymbols;
 	}
+
+	public String getGeneratedCode(){
+		return this.generatedCode;
+	}
+
 }

@@ -35,7 +35,11 @@ public class Main {
 		Code code = new Code();
 		CodeValidationController val = new CodeValidationController(codeView, code);
 		val.handleUserCodeValidation();
+		val.handleUserSymbolValidation();
+		int s = code.getPossibleSymbols();
 		int l = code.getCodeLength();
+		CodeGenerator generator = new CodeGenerator();
 		System.out.println(l);
+		System.out.println(s);
 	}
 }
