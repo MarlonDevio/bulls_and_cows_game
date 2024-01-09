@@ -2,19 +2,19 @@ package bullscows.strategies;
 
 import bullscows.interfaces.AsciiStrategy;
 
-import java.util.List;
 
 public abstract class AbstractCodeGenerator {
-    protected AsciiRanges range;
-    protected AsciiStrategy asciiStrategy;
 
-    public AbstractCodeGenerator(AsciiStrategy asciiStrategy, AsciiRanges range){
-        this.range = range;
-        this.asciiStrategy = asciiStrategy;
+    protected AsciiStrategy numbersOnlyStrategy;
+    protected AsciiStrategy lettersStrategy;
+
+    public AbstractCodeGenerator(AsciiStrategy strategy, AsciiStrategy lettersStrategy) {
+       this.numbersOnlyStrategy = strategy;
+       this.lettersStrategy = lettersStrategy;
     }
 
-    public List<Character> performStrategy(){
-        return asciiStrategy.generateAsciiValues();
+    public AbstractCodeGenerator() {
     }
+
 
 }
