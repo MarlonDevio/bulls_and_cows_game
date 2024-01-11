@@ -138,6 +138,12 @@ public class Validator {
         }
         return true;
     }
+    public static <T> boolean meetsSingleRequirement(T value,
+                                                     Predicate<T> condition
+                                                     ) {
+        return condition.test(value);
+    }
+
 
 }
 
@@ -201,4 +207,5 @@ public class Validator {
  * //        }
  * //        return true;
  * //    }
+ *
  */

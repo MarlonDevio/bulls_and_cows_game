@@ -1,4 +1,4 @@
-package bullscows.strategies;
+package bullscows.validationStrategies;
 
 
 public enum AsciiRanges {

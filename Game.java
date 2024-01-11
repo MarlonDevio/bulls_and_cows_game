@@ -1,13 +1,15 @@
-package bullscows.game;
+package bullscows;
 
-import bullscows.strategies.GameCodeGenerator;
-import bullscows.ConsoleHandler;
-import bullscows.Player;
-import bullscows.ScoreKeeper;
+import bullscows.displayStrategies.BullsAndCowsDisplayBehavior;
+import bullscows.interfaces.DisplayBehavior;
+import bullscows.validationStrategies.GameCodeGenerator;
+import bullscows.validationStrategies.ScoreKeeper;
+
 
 import java.util.ArrayList;
 
 import static bullscows.helpers.Helper.print;
+import static bullscows.helpers.Helper.readString;
 
 /**
  * Class Game encapsulates the main game logic and interactions in the Bulls and Cows game.
@@ -17,7 +19,7 @@ public class Game {
     private final int maxCodeLength = 36;  // The maximum length of the game code.
     private final int MIN_RANGE = 1;       // The minimum range value for game settings.
     private int maxSymbolRange = 36;       // The maximum range of symbols used in the game.
-    private String code;                   // The secret game code.
+    private ArrayList<Character> code;                  // The secret game code.
     GameCodeGenerator gameCodeGenerator;   // The generator for the game code.
     ArrayList<Player> players;             // List of players in the game.
     ScoreKeeper scoreKeeper;               // Manages scoring for the game.
@@ -57,15 +59,46 @@ public class Game {
         gameCodeGenerator.setCodeLength(codeLength);
 
         // Gets the range of symbols from the user, ensuring valid input within the defined range.
-        int symbolLength = consoleHandler.getNumericValueFromUser("Input the number of possible symbols in the code:", this.MIN_RANGE, this.maxSymbolRange);
+        int symbolLength = consoleHandler.askSymBolLength(this.MIN_RANGE, this.maxSymbolRange, codeLength);
+
         gameCodeGenerator.setSymbolLength(symbolLength);
 
         // Displays the hidden code in the form of asterisks.
-        consoleHandler.displayHiddenCode(gameCodeGenerator.getAsteriskFromCode());
+        consoleHandler.displayHiddenCode(gameCodeGenerator.secretMessageBuilder());
+
+        consoleHandler.displayGameMessage();
+
+
+        setSecretCode((ArrayList<Character>) gameCodeGenerator.generateRandomNumberList());
+
+        scoreKeeper.setSecretCode(this.code);
+
+        consoleHandler.setDisplayBehavior(new BullsAndCowsDisplayBehavior());
+
+        DisplayBehavior bullsAndCowsDisplayBehavior = consoleHandler.getDisplayBehavior();
 
         // Debugging lines - display the generated list of characters and the entered lengths.
-        print(gameCodeGenerator.generateRandomNumberList().toString());
+        print(this.code.toString());
+        System.out.println("Give input for code");
+        String input = readString();
+        scoreKeeper.checkForBulls(input);
+        scoreKeeper.checkForCows(input);
+        print(input);
+
+        bullsAndCowsDisplayBehavior.display(scoreKeeper.getBulls(),
+                scoreKeeper.getCows());
+        print(""+scoreKeeper.getBulls());
+        print(""+scoreKeeper.getCows());
         System.out.println(codeLength);
         System.out.println(symbolLength);
+
+    }
+
+    private void setSecretCode(ArrayList<Character> code){
+      this.code = code;
+    }
+
+    private ArrayList<Character> getCode(){
+        return this.code;
     }
 }

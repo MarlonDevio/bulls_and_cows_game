@@ -3,6 +3,7 @@ package bullscows;
 import bullscows.helpers.Validator;
 
 import static bullscows.helpers.Helper.convertStringToInt;
+import static bullscows.helpers.Helper.print;
 import static bullscows.helpers.Validator.meetsSingleRequirement;
 
 public class InputValidator {
@@ -39,4 +40,10 @@ public class InputValidator {
         }
         return true;
     }
+
+    public boolean isSmaller(int smallest, int largest){
+      return smallest < largest;
+    }
+
+
 }
