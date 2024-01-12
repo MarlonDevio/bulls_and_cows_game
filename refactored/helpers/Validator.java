@@ -1,10 +1,11 @@
-package bullscows.helpers;
+package bullscows.refactored.helpers;
 
+import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import static bullscows.helpers.Helper.print;
+import static bullscows.refactored.helpers.Helper.print;
 
 /**
  * Validator class provides a set of static methods for validating different
@@ -39,6 +40,7 @@ public class Validator {
     public static boolean isAlphabetic(String input) {
         return input.matches("^[a-zA-Z]+$");
     }
+
 
     /********************************************************
      ********* Advanced Validators **************************

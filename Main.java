@@ -1,14 +1,16 @@
 package bullscows;
 
 
+import bullscows.refactored.TheGame;
+import bullscows.refactored.codegeneration.CodeGenerator;
+import bullscows.refactored.codegeneration.codegenerationstrategies.SecretMessageGenerator;
+import bullscows.refactored.coderequirementhandling.CodeView;
+
 public class Main {
 	public static void main(String[] args) {
-
-//		BiFunction<Integer, Integer, Integer> sum = (x,y) -> x*y;
-//		sum.apply(5,6);
-//	 	sum.andThen(String::valueOf).toString();
-//		System.out.println(t);
-		Game game = new Game();
-		game.init();
+		CodeGenerator codeGenerator = new CodeGenerator();
+		SecretMessageGenerator secretMessageGenerator = new SecretMessageGenerator(codeGenerator);
+		CodeView view = new CodeView();
+		TheGame theGame = new TheGame(codeGenerator, secretMessageGenerator, view);
 	}
 }

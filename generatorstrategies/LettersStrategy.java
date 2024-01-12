@@ -1,6 +1,7 @@
-package bullscows.validationStrategies;
+package bullscows.generatorstrategies;
 
-import bullscows.interfaces.AsciiStrategy;
+import bullscows.refactored.codegeneration.codegenerationstrategies.AsciiStrategy;
+import bullscows.validationStrategies.AsciiRanges;
 
 import java.util.List;
 import java.util.stream.Collectors;
